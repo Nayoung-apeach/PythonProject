@@ -237,4 +237,6 @@ $RECYCLE.BIN/
 # Windows shortcuts
 *.lnk
 
+/myvenv/Scripts/mysite/private_settings.py
+
 # End of https://www.toptal.com/developers/gitignore/api/windows,django,python

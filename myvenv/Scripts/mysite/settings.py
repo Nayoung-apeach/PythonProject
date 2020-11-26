@@ -31,13 +31,14 @@ ALLOWED_HOSTS = ['127.0.0.1', 'localhost',]
 # Application definition
 
 INSTALLED_APPS = [
+    # 'dramarama.apps.DramaramaConfig',
     'django.contrib.admin',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'polls'
+    'dramarama',
 ]
 
 MIDDLEWARE = [
@@ -75,9 +76,9 @@ WSGI_APPLICATION = 'mysite.wsgi.application'
 # https://docs.djangoproject.com/en/2.0/ref/settings/#databases
 
 DATABASES = {
-    'default': {
+    'default': { # SQLITE
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'),
+        'NAME': os.path.join(BASE_DIR, 'db.sqlite3'), #def: db.sqlite3
     }
 }
 
