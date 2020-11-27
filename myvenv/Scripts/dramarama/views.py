@@ -3,7 +3,7 @@ from django.template import loader
 from django.http import HttpResponse
 
 def index(request):
-    context = {}
-    template_name = 'dramarama/index.html'
-    return render(request, template_name)
+    return render(request, 'dramarama/index.html')
 
+def go_form(request):
+    return render(request, 'dramarama/who-you-are.html')
