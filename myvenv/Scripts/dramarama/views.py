@@ -3,9 +3,10 @@ from django.template import loader
 from django.http import HttpResponse
 from django.views.decorators.csrf import csrf_exempt
 from django.utils.decorators import method_decorator
-
 import os
+import csv
 import pandas as pd
+from dramarama.models import Drama
 
 from dramarama import main_solution as sol
 
@@ -19,17 +20,19 @@ def form(request):
 @method_decorator(csrf_exempt)
 def result(request):
     input_form = request.POST
-    """
-    FORMDATA_DIR = os.path.join(os.path.relpath(), '/datas_csv/formdata.csv')
-    with open(FORMDATA_DIR, encoding='utf-8') as form_csv:
-        reader = csv.DictReader(form_csv, delimiter=',')
-        form_df = pd.DataFrame(reader)
 
-    DRAMADATA_DIR = os.path.join(os.path.relpath(), '/datas_csv/dramadata.csv')
-    with open(DRAMADATA_DIR, encoding='utf-8') as drama_csv:
-        reader = csv.DictReader(drama_csv, delimiter=',')
-        drama_df = pd.DataFrame(reader)
-    """
+    """ **[경고] 이 코드는 절대로 실행되선 안됩니다. 주석 풀지 마세요.
+    DRAMADATA_DIR = 'dramarama/static/data/dramadata.csv'
+    with open(DRAMADATA_DIR, newline='', encoding='utf-8') as drama_csv:
+        reader = csv.DictReader(drama_csv)
+        for row in reader:
+            Drama.objects.create(
+                id = row['id'],
+                title = row['title'],
+                channel = row['channel'],
+                info_url = row['information']
+            )
+    DB insert """
 
     result = {'test':sol.solution(dict(input_form))}
 

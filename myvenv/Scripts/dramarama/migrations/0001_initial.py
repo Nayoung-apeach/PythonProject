@@ -12,7 +12,7 @@ class Migration(migrations.Migration):
 
     operations = [
         migrations.CreateModel(
-            name='drama',
+            name='Drama',
             fields=[
                 ('id', models.IntegerField(default=0, primary_key=True, serialize=False)),
                 ('title', models.CharField(max_length=200)),

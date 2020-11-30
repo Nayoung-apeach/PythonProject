@@ -2,13 +2,12 @@ import operator
 from random import randrange
 import pandas as pd
 import csv
+import sqlite3
 import warnings
 warnings.filterwarnings("ignore", 'This pattern has match groups')
 
 
-
 weight_list = {}  # weight list
-
 
 def process_weight(drama_code, step1, step2, step3):
     weight = 2  # 가중치
@@ -24,7 +23,7 @@ def process_weight(drama_code, step1, step2, step3):
 def solution(input_data):
 
     # Read formdata.csv
-    form_df = pd.read_csv('dramarama/static/data/formdata.csv')
+    form_df = pd.read_csv('./dramarama/static/data/formdata.csv')
     form_df.drop(['date'], axis='columns', inplace=True)
     form_df = form_df.fillna('')  # NaN값 제거
 
@@ -32,10 +31,14 @@ def solution(input_data):
     col_names = list(form_df)
 
     # Read dramadata.csv
-    drama_df = pd.read_csv('dramarama/static/data/dramadata.csv')
+    drama_df = pd.read_csv('./dramarama/static/data/dramadata.csv')
     data = list(drama_df['value'])
     # drama code
     drama_code = pd.Series(data, index=list(drama_df['id'].astype(str)))
+
+    # DB Connection
+    conn= sqlite3.connect('./drama_datas.sqlite3')
+
 
 
     for idx in list(drama_code.index):  # Initialize weight list
