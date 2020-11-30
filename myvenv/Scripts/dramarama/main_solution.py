@@ -1,17 +1,13 @@
 import operator
 from random import randrange
 import pandas as pd
+import csv
 import warnings
 warnings.filterwarnings("ignore", 'This pattern has match groups')
 
 
-# formdata.csv
-filename_form = r'./datas_csv/formdata.csv'
-# dramadata.csv
-filename_drama = r'./datas_csv/dramadata.csv'
 
 weight_list = {}  # weight list
-
 
 
 def process_weight(drama_code, step1, step2, step3):
@@ -28,16 +24,19 @@ def process_weight(drama_code, step1, step2, step3):
 def solution(input_data):
 
     # Read formdata.csv
-    form_df = pd.read_csv(filename_form)
+    form_df = pd.read_csv('dramarama/static/data/formdata.csv')
     form_df.drop(['date'], axis='columns', inplace=True)
     form_df = form_df.fillna('')  # NaN값 제거
+
     # Column name list
     col_names = list(form_df)
 
     # Read dramadata.csv
-    drama_df = pd.read_csv(filename_drama)
+    drama_df = pd.read_csv('dramarama/static/data/dramadata.csv')
     data = list(drama_df['value'])
-    drama_code = pd.Series(data, index=list(drama_df['id'].astype(str)))  # drama code
+    # drama code
+    drama_code = pd.Series(data, index=list(drama_df['id'].astype(str)))
+
 
     for idx in list(drama_code.index):  # Initialize weight list
         weight_list[idx] = 0
@@ -50,9 +49,8 @@ def solution(input_data):
                 match = form_df[col] == input_data[col]
                 weight_df = form_df[match]
             else:
-                search_val = input_data[col].split(',')  # column value to list
-                for ele in search_val:  # turn all cols in list
-                    match = form_df[col].str.contains(ele)
+                for ele in input_data[col]:  # turn all cols in list
+                    match = (form_df[col].astype(str)).str.contains(ele)
                     weight_df = pd.concat([weight_df, form_df[match]])
 
             first = list(weight_df['first'])
@@ -63,8 +61,8 @@ def solution(input_data):
             if not third: continue
             process_weight(drama_code, first, second, third)  # compute weight
             weight_df = pd.DataFrame()  # Initialize
-    
+
     sorted_weight = sorted(weight_list.items(), key=operator.itemgetter(1), reverse=True)  # form: tuples in list
     drama_obj = drama_df[drama_df['id'].astype(str) == sorted_weight[randrange(3)][0]]
 
-    return drama_obj
+    return dict(drama_obj.iloc[0])

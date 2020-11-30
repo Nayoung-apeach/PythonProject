@@ -5,6 +5,5 @@ from . import views
 # app_name = 'dramarama'
 urlpatterns = [
     path('', views.form),
-    
-    path('To.you--From.Rama💜', views.result)
+    path('To.you--From.Rama💜', views.result),
 ]
