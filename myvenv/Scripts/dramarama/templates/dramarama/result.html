@@ -1,17 +1,18 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
     <meta charset="UTF-8">
     <title>Title</title>
-     <style>
+    <style>
 		@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap');
 	</style>
 </head>
-<body style="font-family: 'Noto Sans KR', sans-serif">
-<div style="text-align: center;">
-<h3 style="color: #C1BCFA" id="dramaname">머니게임</h3><br>
-<h3 id="broadcast">tvN</h3>
-<iframe id="dramainfo" src="https://search.daum.net/search?w=tv&q=%EB%A8%B8%EB%8B%88%EA%B2%8C%EC%9E%84&irk=85609&irt=tv-program&DA=TVP&fbclid=IwAR2knJPxrO6g-AlpAtXq43jVck5YGUBPKm7iboODJGq5AnHCnpMPSMWirz4" width="80%" height="550px"></iframe>
-</div>
-</body>
+
+    <body style="font-family: 'Noto Sans KR', sans-serif">
+        <div style="text-align: center;">
+            <h3 style="color: #C1BCFA" id="dramaname">{{Drama.title}}</h3><br>
+            <h3 id="broadcast">{{Drama.channel}}</h3>
+            <iframe id="dramainfo" width="80%" height="550px" src="{{Drama.information}}"></iframe>
+        </div>
+    </body>
 </html>
