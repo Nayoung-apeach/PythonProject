@@ -31,22 +31,21 @@ def solution(input_data):
     col_names = list(form_df)
 
     # Read dramadata.csv
-    drama_df = pd.read_csv('./dramarama/static/data/dramadata.csv')
+    # drama_df = pd.read_csv('./dramarama/static/data/dramadata.csv')
 
 
-    # # DB Connection
-    # conn= sqlite3.connect('./drama_datas.sqlite3')
-    # cur = conn.cursor()
-    # cur.execute("SELECT * FROM dramarama_drama")
-    # rows = cur.fetchall()
-    # cols = [column[0] for column in cur.description]
-    # drama_df = pd.DataFrame.from_records(data=rows, columns=cols)
-    # conn.close()
+    # DB Connection
+    conn= sqlite3.connect('./drama_datas.sqlite3')
+    cur = conn.cursor()
+    cur.execute("SELECT * FROM dramarama_drama")
+    rows = cur.fetchall()
+    cols = [column[0] for column in cur.description]
+    drama_df = pd.DataFrame.from_records(data=rows, columns=cols)
+    conn.close()
 
     # drama code
     data = list(drama_df['value'])
     drama_code = pd.Series(data, index=list(drama_df['id'].astype(str)))
-
 
     for idx in list(drama_code.index):  # Initialize weight list
         weight_list[idx] = 0
