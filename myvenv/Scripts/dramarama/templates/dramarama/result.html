@@ -1,18 +1,48 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>Title</title>
-    <style>
+    <title>DRAMA라마</title>
+       <style>
 		@import url('https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300&display=swap');
-	</style>
+        p{ color: #aba2ff;
+           font-size: 100px;
+         }
+        button{ background-color: #aba2ff;
+                width: 200px;
+                height: 50px;
+                border-radius: 5px;
+                border: 0;
+                outline: 0ch;
+                }
+        button:hover{
+            background-color: #aba2ff;
+                width: 210px;
+                height: 60px;
+                border-radius: 5px;
+                border: 0;
+                outline: 0ch;
+        }
+    </style>
+<script type="text/javascript">
+window.history.forward();
+function noBack(){window.history.forward();}
+</script>
 </head>
-
-    <body style="font-family: 'Noto Sans KR', sans-serif">
-        <div style="text-align: center;">
-            <h3 style="color: #C1BCFA" id="dramaname">{{Drama.title}}</h3><br>
-            <h3 id="broadcast">{{Drama.channel}}</h3>
-            <iframe id="dramainfo" width="80%" height="550px" src="{{Drama.info_url}}"></iframe>
-        </div>
-    </body>
+<body onload="noBack();" onpageshow="if(event.persisted)noBack();" onunload=""
+style="font-family: 'Noto Sans KR', sans-serif">
+<div style="text-align: center;">
+<h3 style="color: #C1BCFA" id="dramaname">머니게임</h3><br>
+<h3 id="broadcast">tvN</h3>
+<iframe id="dramainfo" src="https://search.daum.net/search?w=tv&q=%EB%A8%B8%EB%8B%88%EA%B2%8C%EC%9E%84&irk=85609&irt=tv-program&DA=TVP&fbclid=IwAR2knJPxrO6g-AlpAtXq43jVck5YGUBPKm7iboODJGq5AnHCnpMPSMWirz4" width="80%" height="500px"></iframe>
+<br><br>
+<form action="answer.html" method="post">
+<button input type="submit" value="나의대답" action = "answer.html" method = "post">나의대답</button>
+</form><br>
+<form action="index.html" method="post">
+<button input type="submit" value="홈" action = "index.html" method = "post">홈</button>
+</form>
+</div>
+</body>
 </html>
+
