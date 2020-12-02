@@ -24,24 +24,19 @@
                 outline: 0ch;
         }
     </style>
-<script type="text/javascript">
-window.history.forward();
-function noBack(){window.history.forward();}
-</script>
 </head>
-<body onload="noBack();" onpageshow="if(event.persisted)noBack();" onunload=""
-style="font-family: 'Noto Sans KR', sans-serif">
+<body style="font-family: 'Noto Sans KR', sans-serif">
 <div style="text-align: center;">
 <h3 style="color: #C1BCFA" id="dramaname">머니게임</h3><br>
 <h3 id="broadcast">tvN</h3>
 <iframe id="dramainfo" src="https://search.daum.net/search?w=tv&q=%EB%A8%B8%EB%8B%88%EA%B2%8C%EC%9E%84&irk=85609&irt=tv-program&DA=TVP&fbclid=IwAR2knJPxrO6g-AlpAtXq43jVck5YGUBPKm7iboODJGq5AnHCnpMPSMWirz4" width="80%" height="500px"></iframe>
 <br><br>
-<form action="your-answer" method="post">
-<button input type="submit" value="나의대답" method = "post">나의대답</button>
+<form action="answer.html" method="post">
+<button input type="submit" value="나의대답" action = "answer.html" method = "post">나의대답</button>
 </form><br>
-<a href="{% url 'index' %}">
-<button type="submit">홈</button>
-</a>
+<form action="index.html" method="post">
+<button input type="submit" value="홈" action = "index.html" method = "post">홈</button>
+</form>
 </div>
 </body>
 </html>
