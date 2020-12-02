@@ -37,11 +37,11 @@ style="font-family: 'Noto Sans KR', sans-serif">
 <iframe id="dramainfo" src="https://search.daum.net/search?w=tv&q=%EB%A8%B8%EB%8B%88%EA%B2%8C%EC%9E%84&irk=85609&irt=tv-program&DA=TVP&fbclid=IwAR2knJPxrO6g-AlpAtXq43jVck5YGUBPKm7iboODJGq5AnHCnpMPSMWirz4" width="80%" height="500px"></iframe>
 <br><br>
 <form action="your-answer" method="post">
-<button input type="submit" value="나의대답" action = "answer.html" method = "post">나의대답</button>
+<button input type="submit" value="나의대답" method = "post">나의대답</button>
 </form><br>
-<form action="" method="post">
-<button input type="submit" value="홈" action = "index.html" method = "post">홈</button>
-</form>
+<a href="{% url 'index' %}">
+<button type="submit">홈</button>
+</a>
 </div>
 </body>
 </html>

@@ -17,6 +17,8 @@ def index(request):
 
 @method_decorator(csrf_exempt)
 def form(request):
+    request.session['input'] = {}
+    request.session.modified = True
     return render(request, 'dramarama/form.html')
 
 @method_decorator(csrf_exempt)

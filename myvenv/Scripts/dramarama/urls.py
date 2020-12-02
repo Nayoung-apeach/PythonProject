@@ -4,7 +4,7 @@ from . import views
 
 # app_name = 'dramarama'
 urlpatterns = [
-    path('', views.index),
+    path('', views.index, name='index'),
     path('Who-you-are', views.form),
     path('To.you--From.Rama💜', views.result),
     path('your-answer', views.answer)
