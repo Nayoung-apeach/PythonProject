@@ -7,4 +7,5 @@ urlpatterns = [
     path('', views.index),
     path('Who-you-are', views.form),
     path('To.you--From.Rama💜', views.result),
+    path('your-answer', views.answer)
 ]

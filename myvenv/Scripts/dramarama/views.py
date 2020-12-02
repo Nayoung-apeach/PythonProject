@@ -10,6 +10,9 @@ from dramarama.models import Drama
 
 from dramarama import main_solution as sol
 
+
+
+
 @method_decorator(csrf_exempt)
 def index(request):
     return render(request, 'dramarama/index.html')
@@ -19,8 +22,12 @@ def form(request):
     return render(request, 'dramarama/form.html')
 
 @method_decorator(csrf_exempt)
+def answer(request):
+    return render(request, 'dramarama/answer.html')
+
+@method_decorator(csrf_exempt)
 def result(request):
-    input_form = request.POST
+    input_form = dict(request.POST)
 
     """**[경고] 이 코드는 절대로 실행되선 안됩니다. 주석 풀지 마세요.
     DRAMADATA_DIR = 'dramarama/static/data/dramadata.csv'
@@ -36,6 +43,6 @@ def result(request):
             )
     # DB insert """
 
-    result = {'Drama':sol.solution(dict(input_form))}
+    result = {'Drama':sol.solution(input_form)}
 
     return render(request, 'dramarama/result.html', result)
